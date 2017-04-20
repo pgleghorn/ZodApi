@@ -1,2 +1,6 @@
 language: java
 before_script: cd spring
+# safelist
+branches:
+  only:
+  - master
