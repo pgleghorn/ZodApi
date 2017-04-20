@@ -39,7 +39,7 @@ import { Configuration }                                     from '../configurat
 
 @Injectable()
 export class DefaultApi {
-    protected basePath = 'https://virtserver.swaggerhub.com/pgleghorn/test/1.0.0';
+    protected basePath = 'https://virtserver.swaggerhub.com/pgleghorn/zodapi/1.0.0';
     public defaultHeaders: Headers = new Headers();
     public configuration: Configuration = new Configuration();
 
@@ -68,14 +68,50 @@ export class DefaultApi {
     }
 
     /**
-     * search Zod objects
-     * Use parameters to search for Zod objects. Without any parameters, return all Zod objects.
+     * return kt objects
+     * return kt objects
      * @param searchString pass an optional search string for looking up zod objects
      * @param skip number of records to skip for pagination
      * @param limit maximum number of records to return
      */
-    public searchZodObjects(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Array<models.ZodObject>> {
-        return this.searchZodObjectsWithHttpInfo(searchString, skip, limit, extraHttpRequestParams)
+    public returKtObjects(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Array<models.ZodObject>> {
+        return this.returKtObjectsWithHttpInfo(searchString, skip, limit, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * return bt objects
+     * return bt objects
+     * @param searchString pass an optional search string for looking up zod objects
+     * @param skip number of records to skip for pagination
+     * @param limit maximum number of records to return
+     */
+    public returnBtObjects(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Array<models.ZodObject>> {
+        return this.returnBtObjectsWithHttpInfo(searchString, skip, limit, extraHttpRequestParams)
+            .map((response: Response) => {
+                if (response.status === 204) {
+                    return undefined;
+                } else {
+                    return response.json();
+                }
+            });
+    }
+
+    /**
+     * return st objects
+     * return st objects
+     * @param searchString optional search string for looking up zod objects
+     * @param skip number of records to skip for pagination
+     * @param limit maximum number of records to return
+     */
+    public returnStObjects(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Array<models.ZodObject>> {
+        return this.returnStObjectsWithHttpInfo(searchString, skip, limit, extraHttpRequestParams)
             .map((response: Response) => {
                 if (response.status === 204) {
                     return undefined;
@@ -87,14 +123,114 @@ export class DefaultApi {
 
 
     /**
-     * search Zod objects
-     * Use parameters to search for Zod objects. Without any parameters, return all Zod objects.
+     * return kt objects
+     * return kt objects
      * @param searchString pass an optional search string for looking up zod objects
      * @param skip number of records to skip for pagination
      * @param limit maximum number of records to return
      */
-    public searchZodObjectsWithHttpInfo(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Response> {
-        const path = this.basePath + `/zod`;
+    public returKtObjectsWithHttpInfo(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + `/kt`;
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        if (searchString !== undefined) {
+            queryParameters.set('searchString', <any>searchString);
+        }
+        if (skip !== undefined) {
+            queryParameters.set('skip', <any>skip);
+        }
+        if (limit !== undefined) {
+            queryParameters.set('limit', <any>limit);
+        }
+
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+        
+            
+
+
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = this.extendObj(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * return bt objects
+     * return bt objects
+     * @param searchString pass an optional search string for looking up zod objects
+     * @param skip number of records to skip for pagination
+     * @param limit maximum number of records to return
+     */
+    public returnBtObjectsWithHttpInfo(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + `/bt`;
+
+        let queryParameters = new URLSearchParams();
+        let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
+        if (searchString !== undefined) {
+            queryParameters.set('searchString', <any>searchString);
+        }
+        if (skip !== undefined) {
+            queryParameters.set('skip', <any>skip);
+        }
+        if (limit !== undefined) {
+            queryParameters.set('limit', <any>limit);
+        }
+
+
+        // to determine the Content-Type header
+        let consumes: string[] = [
+        ];
+
+        // to determine the Accept header
+        let produces: string[] = [
+            'application/json'
+        ];
+        
+            
+
+
+
+        let requestOptions: RequestOptionsArgs = new RequestOptions({
+            method: RequestMethod.Get,
+            headers: headers,
+            search: queryParameters
+        });
+        
+        // https://github.com/swagger-api/swagger-codegen/issues/4037
+        if (extraHttpRequestParams) {
+            requestOptions = this.extendObj(requestOptions, extraHttpRequestParams);
+        }
+
+        return this.http.request(path, requestOptions);
+    }
+
+    /**
+     * return st objects
+     * return st objects
+     * @param searchString optional search string for looking up zod objects
+     * @param skip number of records to skip for pagination
+     * @param limit maximum number of records to return
+     */
+    public returnStObjectsWithHttpInfo(searchString?: string, skip?: number, limit?: number, extraHttpRequestParams?: any): Observable<Response> {
+        const path = this.basePath + `/st`;
 
         let queryParameters = new URLSearchParams();
         let headers = new Headers(this.defaultHeaders.toJSON()); // https://github.com/angular/angular/issues/6845
