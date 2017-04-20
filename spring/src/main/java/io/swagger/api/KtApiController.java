@@ -17,12 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-03-09T12:11:28.570Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-04-20T21:54:25.816Z")
 
 @Controller
-public class ZodApiController implements ZodApi {
+public class KtApiController implements KtApi {
 
-    public ResponseEntity<List<ZodObject>> searchZodObjects(@ApiParam(value = "pass an optional search string for looking up zod objects") @RequestParam(value = "searchString", required = false) String searchString,
+    public ResponseEntity<List<ZodObject>> returKtObjects(@ApiParam(value = "pass an optional search string for looking up zod objects") @RequestParam(value = "searchString", required = false) String searchString,
         @ApiParam(value = "number of records to skip for pagination") @RequestParam(value = "skip", required = false) Integer skip,
         @ApiParam(value = "maximum number of records to return") @RequestParam(value = "limit", required = false) Integer limit) {
         // do some magic!

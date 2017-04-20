@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * ZodObject
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-03-09T12:11:28.570Z")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.SpringCodegen", date = "2017-04-20T21:54:25.816Z")
 
 public class ZodObject   {
   @JsonProperty("id")
@@ -51,7 +51,7 @@ public class ZodObject   {
    * Get type
    * @return type
   **/
-  @ApiModelProperty(example = "km", required = true, value = "")
+  @ApiModelProperty(example = "st", required = true, value = "")
   public String getType() {
     return type;
   }
@@ -69,7 +69,7 @@ public class ZodObject   {
    * Get name
    * @return name
   **/
-  @ApiModelProperty(example = "test km object", required = true, value = "")
+  @ApiModelProperty(example = "test zod object", required = true, value = "")
   public String getName() {
     return name;
   }
